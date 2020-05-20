@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <script>
+        // Your alert background. Default is a vibrant green
+        const alertBg = '#00AA00';
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open Sans Condensed:700">
+
+	<style>
+    body {
+      background-color: red;
+    }
+
+		#popuptext {
+		    display: inline-block;
+			font-family: 'Open Sans Condensed';
+			font-weight: 700;
+			color: white;
+			font-size: 60px;
+			margin: 0;
+			margin-left: 15px;
+			white-space: nowrap;
+		}
+
+		#popupbox {
+			position: absolute;
+			bottom: 20px;
+            left: 20px;
+			width: 0px;
+			height: 82px;
+			overflow: hidden;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<div id="popupbox">
+	    <h1 id="popuptext"></h1>
+	</div>
+
+</body>
+
+<script>
+    const doAnimation = () => {
+        const textWidth = $("#popuptext").width();
+        $("#popuptext").css({"opacity":0, "margin-left":"50px"});
+        $("#popupbox").width(1);
+        $("#popupbox").animate({width:textWidth+30}, 500);
+        $("#popuptext").animate({"opacity":1, "margin-left":"15px"}, 700);
+    }
+
+    $("#popupbox").show();
+    $("#popupbox").css({"background-color":alertBg});
+    $("#popuptext").text(decodeURIComponent(location.search.slice(1)));
+    doAnimation();
+</script>
+</html>
